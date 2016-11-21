@@ -18,7 +18,7 @@ Via Maven...
   <type>pom</type>
 </dependency>
 ```
-... or gradle, by adding this repository in your project `build.gradle`
+... or Gradle, by adding this repository in your project `build.gradle`
 ```gradle
 maven {
   url 'https://dl.bintray.com/oyzuu/maven/'
@@ -53,14 +53,14 @@ Bitmap bitmap = new PatternPlaceholder.Builder(this)
 
 Use [any material design color](https://material.google.com/style/color.html) individually or get corresponding swatch with MaterialColor.getColorForValue(int, int) and getSwatch(int)
 
-For asynchronous loading, use generate(Context) or generate(ImageView). 
+For asynchronous loading, use generate(PatternGeneratorAsyncListener) or generate(ImageView). 
 With a context provided as listener, onGenerated(Bitmap) will be called on completion.
 ```java
 new PatternPlaceholder.Builder(this)
                 // the complete swatch from 50 to 900
                 .setPalette(MaterialColor.getSwatch(MaterialColor.Color.LIGHT_BLUE))
                 .generate(yourImageView); 
-                // or generate(yourContext)
+                // or generate(PatternGeneratorAsyncListener)
 ```
 
 Or use RandomColor for various random coloring (i.e. : light greys,  dark greys or any randomized color)
