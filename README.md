@@ -8,7 +8,7 @@ A bitmap generator, for Android, with numerous tiling options.
 * All the material colors at hand with swatches or individual color getters
 
 ## How-to
-Intanciate a new Builder instance with a context and generate. It will, by default, generate a 3 by 3 random gray mozaic.
+Instantiate a new Builder instance with a context and generate. It will, by default, generate a 3 by 3 random gray mozaic.
 ```java
 Bitmap bitmap = new PatternPlaceholder.Builder(this).generate();
 ```
@@ -28,7 +28,7 @@ Bitmap bitmap = new PatternPlaceholder.Builder(this)
 Use [any material design color](https://material.google.com/style/color.html) individually or get corresponding swatch with MaterialColor.getColorForValue(int, int) and getSwatch(int)
 
 For asynchronous loading, use generate(Context) or generate(ImageView). 
-With context provided as listener, onGenerated(Bitmap) will be called on completion.
+With a context provided as listener, onGenerated(Bitmap) will be called on completion.
 ```java
 new PatternPlaceholder.Builder(this)
                 // the complete swatch from 50 to 900
@@ -42,11 +42,11 @@ Or use RandomColor for various random coloring (i.e. : light greys,  dark greys 
 new PatternPlaceholder.Builder(this)
                 // ALL, LIGHT_GREY, MEDIUM_GREY, DARK_GREY, GREY
                 .setColorGenerationType(RandomColor.ColorType.ALL) 
-                .generate(mImageView1);
+                .generate(yourImageView);
 ```
 
 ## Installation
-Via Maven
+Via Maven...
 ```xml
 <dependency>
   <groupId>be.omnuzel.patternplaceholder</groupId>
@@ -55,7 +55,7 @@ Via Maven
   <type>pom</type>
 </dependency>
 ```
-Or gradle, by adding this in your project ``build.gradle`` repositories
+... or gradle, by adding this repository in your project ``build.gradle``
 ```gradle
 maven {
   url 'https://dl.bintray.com/oyzuu/maven/'
