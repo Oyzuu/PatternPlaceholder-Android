@@ -1,4 +1,4 @@
-# PatternPlaceholder-Android
+![alt text](https://github.com/Oyzuu/PatternPlaceholder-Android/blob/master/app/src/main/res/mipmap-xxxhdpi/patternplaceholder-title.png "Pattern Placeholder for Android")
 A bitmap generator, for Android, with numerous tiling options.
 
 ## Features
