@@ -74,7 +74,7 @@ new PatternPlaceholder.Builder(this)
 ### Builder methods
 
 name | description
----
+--- | ---
 setSize(*int*, *int*) | Set the width and height of the bitmap
 setTilesPerSide(*int*) | Set the number of tiles, strips, scales or lines, depending on pattern type
 setPalette(*int[]*) | Set the color palette used for generation, nullable (if null, will use colorGenerationType)
