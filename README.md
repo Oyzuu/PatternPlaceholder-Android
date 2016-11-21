@@ -49,7 +49,7 @@ Bitmap bitmap = new PatternPlaceholder.Builder(this)
                 .generate();
 ```
 
-![alt text]https://github.com/Oyzuu/PatternPlaceholder-Android/blob/master/app/src/main/res/mipmap-xxxhdpi/patternplaceholder-patterns.png "patterns example")
+![alt text](https://github.com/Oyzuu/PatternPlaceholder-Android/blob/master/app/src/main/res/mipmap-xxxhdpi/patternplaceholder-patterns.png "patterns example")
 
 Use [any material design color](https://material.google.com/style/color.html) individually or get corresponding swatch with MaterialColor.getColorForValue(int, int) and getSwatch(int)
 
