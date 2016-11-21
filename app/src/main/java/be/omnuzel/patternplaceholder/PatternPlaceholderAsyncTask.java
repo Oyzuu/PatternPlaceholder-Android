@@ -9,21 +9,21 @@ import android.widget.ImageView;
  * Created by De Cooman Sammy on 18/11/16.
  */
 
-public class PatternGeneratorAsyncTask extends AsyncTask<PatternGenerator.Builder, Void, Bitmap> {
+public class PatternPlaceholderAsyncTask extends AsyncTask<PatternPlaceholder.Builder, Void, Bitmap> {
 
-    private PatternGenerator.PatternGeneratorAsyncListener callback;
+    private PatternPlaceholder.PatternGeneratorAsyncListener callback;
     private ImageView imageView;
 
-    public PatternGeneratorAsyncTask(@NonNull PatternGenerator.PatternGeneratorAsyncListener callback) {
+    public PatternPlaceholderAsyncTask(@NonNull PatternPlaceholder.PatternGeneratorAsyncListener callback) {
         this.callback = callback;
     }
 
-    public PatternGeneratorAsyncTask(@NonNull ImageView imageView) {
+    public PatternPlaceholderAsyncTask(@NonNull ImageView imageView) {
         this.imageView = imageView;
     }
 
     @Override
-    protected Bitmap doInBackground(PatternGenerator.Builder... builders) {
+    protected Bitmap doInBackground(PatternPlaceholder.Builder... builders) {
         return builders[0].generate();
     }
 

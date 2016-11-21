@@ -28,7 +28,7 @@ import java.util.Random;
  * Created by De Cooman Sammy on 11/11/16.
  */
 
-public final class PatternGenerator {
+public final class PatternPlaceholder {
 
     // Constants used for pattern selection
     @Retention(RetentionPolicy.SOURCE)
@@ -248,8 +248,6 @@ public final class PatternGenerator {
         Random random = getRandomForSeed(seed);
 
         final Point[] VERTICES = getVerticesForRandomTriangles(width, height, rows, random);
-//        Log.i("VERTICES-SIZE", "" + VERTICES.length);
-//        Log.i("VERTICES", "" + Arrays.toString(VERTICES));
         final float STEP = (float) height / rows;
         final int COLUMNS = (int) (width / STEP);
 
@@ -259,8 +257,6 @@ public final class PatternGenerator {
             int b = a + 1;
             int c = a + (COLUMNS + 1);
             int d = c + 1;
-
-//            Log.i("Point-Indices", String.format("a = %s, b = %s, c = %s, d = %s", a, b, c, d));
 
             Point pa = VERTICES[a];
             Point pb = VERTICES[b];
@@ -324,13 +320,9 @@ public final class PatternGenerator {
         final float MARGIN = STEP * .75f;
         final float HALF_MARGIN = MARGIN / 2;
 
-//        Log.i("VERTICES-VALUES", String.format("Height / %s = Step = %s", rows, STEP));
-
         int arraySize = (rows + 1) * (COLUMNS + 1);
         Point[] vertices = new Point[arraySize];
         int n = 0;
-
-//        Log.i("VERTICES-VALUES", String.format("rows = %s, columns = %s, array size = %s", rows, COLUMNS, arraySize));
 
         // First line
         vertices[n++] = new Point(0.f, 0.f);
@@ -478,15 +470,16 @@ public final class PatternGenerator {
     }
 
     /**
-     * A bitmap builder with various tiling patterns.
+     * A bitmap builder with various tiling patterns. Using generate() without any parameter set will
+     * return a 150 by 150 textless gray bitmap with 3 by 3 square tiling.
      * <p>
      * Example :
      * <pre>
      *     {@code
-     * bitmap = new PatternGenerator.Builder()
+     * bitmap = new PatternPlaceholder.Builder()
      *     .setSize(MyContainer.width())
      *     .setTilesPerSide(4)
-     *     .setPatternType(PatternGenerator.PatternType.RANDOM_TRIANGLES)
+     *     .setPatternType(PatternPlaceholder.PatternType.RANDOM_TRIANGLES)
      *     .setColorGenerationType(RandomColor.ColorType.DARK_GRAY)
      *     .setText("SCALES")
      *     .setTextColor(Color.WHITE)
@@ -515,54 +508,54 @@ public final class PatternGenerator {
             this.context = context;
         }
 
-        public PatternGenerator.Builder setSize(@IntRange(from = 1) int width,
-                                                @IntRange(from = 1) int height) {
+        public PatternPlaceholder.Builder setSize(@IntRange(from = 1) int width,
+                                                  @IntRange(from = 1) int height) {
             this.width = width;
             this.height = height;
             return this;
         }
 
-        public PatternGenerator.Builder setTilesPerSide(@IntRange(from = 1) int tilesPerSide) {
+        public PatternPlaceholder.Builder setTilesPerSide(@IntRange(from = 1) int tilesPerSide) {
             this.tilesPerSide = tilesPerSide;
             return this;
         }
 
-        public PatternGenerator.Builder setPalette(@Nullable @Size(min = 1) int[] palette) {
+        public PatternPlaceholder.Builder setPalette(@Nullable @Size(min = 1) int[] palette) {
             this.palette = palette;
             return this;
         }
 
-        public PatternGenerator.Builder setColorGenerationType(@RandomColor.ColorType int colorGenerationType) {
+        public PatternPlaceholder.Builder setColorGenerationType(@RandomColor.ColorType int colorGenerationType) {
             this.colorGenerationType = colorGenerationType;
             return this;
         }
 
-        public PatternGenerator.Builder setPatternType(@PatternType int patternType) {
+        public PatternPlaceholder.Builder setPatternType(@PatternType int patternType) {
             this.patternType = patternType;
             return this;
         }
 
-        public PatternGenerator.Builder setSeed(long seed) {
+        public PatternPlaceholder.Builder setSeed(long seed) {
             this.seed = seed;
             return this;
         }
 
-        public PatternGenerator.Builder setText(@Nullable String text) {
+        public PatternPlaceholder.Builder setText(@Nullable String text) {
             this.text = text;
             return this;
         }
 
-        public PatternGenerator.Builder setTextColor(@ColorInt int textColor) {
+        public PatternPlaceholder.Builder setTextColor(@ColorInt int textColor) {
             this.textColor = textColor;
             return this;
         }
 
-        public PatternGenerator.Builder setTextAlign(@TextAlign int textAlign) {
+        public PatternPlaceholder.Builder setTextAlign(@TextAlign int textAlign) {
             this.textAlign = textAlign;
             return this;
         }
 
-        public PatternGenerator.Builder enableCache(boolean isCachingEnabled) {
+        public PatternPlaceholder.Builder withCacheEnabled(boolean isCachingEnabled) {
             this.isCachingEnabled = isCachingEnabled;
             return this;
         }
@@ -580,7 +573,7 @@ public final class PatternGenerator {
                 bitmap = fetcher.getBitmapFromCache(hashCode() + "");
                 if (bitmap != null) {
                     Log.i("Fetcher", "Read bitmap from cache");
-                    Log.i("BUILDER-TIME", "" + (System.currentTimeMillis() - start));
+//                    Log.i("BUILDER-TIME", "" + (System.currentTimeMillis() - start));
                     return bitmap;
                 }
             }
@@ -623,7 +616,7 @@ public final class PatternGenerator {
                 }
             }
 
-            Log.i("BUILDER-TIME", "" + (System.currentTimeMillis() - start));
+//            Log.i("BUILDER-TIME", "" + (System.currentTimeMillis() - start));
 
             return bitmap;
         }
@@ -634,14 +627,17 @@ public final class PatternGenerator {
          * onGenerated(Bitmap) will be called by the listener on completion.
          */
         public AsyncTask<Builder, Void, Bitmap> generate(PatternGeneratorAsyncListener listener) {
-            return new PatternGeneratorAsyncTask(listener).execute(this);
+            return new PatternPlaceholderAsyncTask(listener).execute(this);
         }
 
         /**
          * Generate the bitmap asynchronously and load it into provided ImageView.
          */
         public AsyncTask<Builder, Void, Bitmap> generate(ImageView imageView) {
-            return new PatternGeneratorAsyncTask(imageView).execute(this);
+            // In case of lengthy generation, preset imageview's background with a color from
+            // desired palette or generation type
+            imageView.setBackgroundColor(RandomColor.get(palette, colorGenerationType, new Random()));
+            return new PatternPlaceholderAsyncTask(imageView).execute(this);
         }
 
         @Override

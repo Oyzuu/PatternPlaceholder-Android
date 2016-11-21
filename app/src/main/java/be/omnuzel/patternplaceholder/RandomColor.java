@@ -37,7 +37,7 @@ public final class RandomColor {
      *
      * @param palette   an integer array with color codes
      * @param colorType the type of color returned for color randomization, ColorType.GREY by default
-     * @param random    the Random instance passed from PatternGenerator, non null
+     * @param random    the Random instance passed from PatternPlaceholder, non null
      * @return a randomly chosen color from given palette or a randomly generated color if palette is null
      */
     public static int get(@Nullable int[] palette, @ColorType int colorType, @NonNull Random random) {
@@ -64,7 +64,7 @@ public final class RandomColor {
     /**
      * Generate a random color
      *
-     * @param random the Random instance passed from PatternGenerator, non null
+     * @param random the Random instance passed from PatternPlaceholder, non null
      * @return the randomly generated color
      */
     public static int getColor(@NonNull Random random) {
@@ -78,7 +78,7 @@ public final class RandomColor {
     /**
      * Generate a random grey of range 0-255
      *
-     * @param random the Random instance passed from PatternGenerator, non null
+     * @param random the Random instance passed from PatternPlaceholder, non null
      * @return the randomly generated grey
      */
     public static int getGrey(@NonNull Random random) {
@@ -90,7 +90,7 @@ public final class RandomColor {
     /**
      * Generate a random grey of range 155-255
      *
-     * @param random the Random instance passed from PatternGenerator, non null
+     * @param random the Random instance passed from PatternPlaceholder, non null
      * @return the randomly generated grey
      */
     public static int getLightGrey(@NonNull Random random) {
@@ -102,7 +102,7 @@ public final class RandomColor {
     /**
      * Generate a random grey of range 100-200
      *
-     * @param random the Random instance passed from PatternGenerator, non null
+     * @param random the Random instance passed from PatternPlaceholder, non null
      * @return the randomly generated grey
      */
     public static int getMediumGrey(@NonNull Random random) {
@@ -114,7 +114,7 @@ public final class RandomColor {
     /**
      * Generate a random grey of range 0-100
      *
-     * @param random the Random instance passed from PatternGenerator, non null
+     * @param random the Random instance passed from PatternPlaceholder, non null
      * @return the randomly generated grey
      */
     public static int getRandomDarkGrey(@NonNull Random random) {

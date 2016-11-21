@@ -3,7 +3,6 @@ package be.omnuzel.patternplaceholder;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -28,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         Bitmap bitmap;
 
-        int patternType = PatternGenerator.PatternType.SCALES;
+        int patternType = PatternPlaceholder.PatternType.SCALES;
         int[] palette = new int[]{
                 MaterialColor.getColorForValue(MaterialColor.Color.BLUE, 500),
                 MaterialColor.getColorForValue(MaterialColor.Color.BLUE, 200),
@@ -37,38 +36,16 @@ public class MainActivity extends AppCompatActivity {
 
         RelativeLayout layout = (RelativeLayout) findViewById(R.id.activity_main);
 
-        PatternGenerator.Builder builder = new PatternGenerator.Builder(this)
-                .setSize(150, 300)
-                .setPatternType(PatternGenerator.PatternType.SCALES)
-                .setTilesPerSide(4)
-                .setPalette(MaterialColor.getSwatch(MaterialColor.Color.TEAL));
-        Log.i("Builder-hash", "" + builder.hashCode());
-        builder.generate(mImageView1);
+        new PatternPlaceholder.Builder(this)
+                .setTilesPerSide(-6)
+                .generate(mImageView1);
 
-        PatternGenerator.Builder builder2 = new PatternGenerator.Builder(this)
-                .setSize(150, 150)
-                .setPatternType(PatternGenerator.PatternType.RANDOM_TRIANGLES)
-                .setTilesPerSide(4)
-                .setPalette(MaterialColor.getSwatch(MaterialColor.Color.LIME))
-                .setText("User")
-                .setTextAlign(PatternGenerator.TextAlign.CENTER);
-        Log.i("Builder2-hash", "" + builder2.hashCode());
-        builder2.generate(mImageView2);
+        new PatternPlaceholder.Builder(this).generate(mImageView2);
 
-        PatternGenerator.Builder builder3 = new PatternGenerator.Builder(this)
-                .setSize(300, 150)
-                .setPatternType(PatternGenerator.PatternType.SQUARES)
-                .setTilesPerSide(8)
-                .setPalette(MaterialColor.getSwatch(MaterialColor.Color.DEEP_ORANGE));
-        Log.i("Builder3-hash", "" + builder3.hashCode());
+        PatternPlaceholder.Builder builder3 = new PatternPlaceholder.Builder(this);
         builder3.generate(mImageView3);
 
-        PatternGenerator.Builder builder4 = new PatternGenerator.Builder(this)
-                .setSize(150, 150)
-                .setPatternType(PatternGenerator.PatternType.VERTICAL_LINES)
-                .setTilesPerSide(10)
-                .setPalette(MaterialColor.getSwatch(MaterialColor.Color.PINK));
-        Log.i("Builder3-hash", "" + builder3.hashCode());
+        PatternPlaceholder.Builder builder4 = new PatternPlaceholder.Builder(this);
         builder4.generate(mImageView4);
 
         return super.onTouchEvent(event);
