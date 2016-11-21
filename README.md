@@ -45,4 +45,24 @@ new PatternPlaceholder.Builder(this)
                 .generate(mImageView1);
 ```
 
+## Installation
+Via Maven
+```xml
+<dependency>
+  <groupId>be.omnuzel.patternplaceholder</groupId>
+  <artifactId>patternplaceholder</artifactId>
+  <version>1.0.0</version>
+  <type>pom</type>
+</dependency>
+```
+Or gradle, by adding this in your project ``build.gradle`` repositories
+```gradle
+maven {
+  url 'https://dl.bintray.com/oyzuu/maven/'
+}
+```
+and this in your app ``build.gradle``
+```gradle
+compile 'be.omnuzel.patternplaceholder:patternplaceholder:1.0.0'
+```
 
