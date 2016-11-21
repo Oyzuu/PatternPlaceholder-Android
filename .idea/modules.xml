@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PatternPlaceholder.iml" filepath="$PROJECT_DIR$/PatternPlaceholder.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/patternplaceholder/patternplaceholder.iml" filepath="$PROJECT_DIR$/patternplaceholder/patternplaceholder.iml" />
     </modules>
   </component>
 </project>

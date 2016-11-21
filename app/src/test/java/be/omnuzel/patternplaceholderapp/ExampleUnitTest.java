@@ -1,4 +1,4 @@
-package be.omnuzel.patternplaceholder;
+package be.omnuzel.patternplaceholderapp;
 
 import android.content.Context;
 import android.graphics.Bitmap;

@@ -1,0 +1,64 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.0"
+
+    defaultConfig {
+        minSdkVersion 17
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.0.0'
+    testCompile 'junit:junit:4.12'
+}
+
+
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            group "be.omnuzel.patternplaceholder"
+            version "1.0.0"
+        }
+    }
+}
+
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_APIKEY')
+    // jFrog plugin must be declared for this line to work
+    configurations = ['archives']
+    // Package info for BinTray
+    pkg {
+        repo = 'PatternPlaceholder'
+        name = 'be.omnuzel.patternplaceholder'
+        userOrg = System.getenv("BINTRAY_USER")
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/Oyzuu/PatternPlaceholder-Android.git'
+        version {
+            name = '1.0.0'
+            desc = 'Gradle Bintray Plugin 1.0 final'
+            released = new Date()
+            vcsTag = '1.0.0'
+        }
+    }
+}

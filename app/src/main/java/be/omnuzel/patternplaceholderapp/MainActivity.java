@@ -1,4 +1,4 @@
-package be.omnuzel.patternplaceholder;
+package be.omnuzel.patternplaceholderapp;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -6,6 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+
+import be.omnuzel.patternplaceholder.MaterialColor;
+import be.omnuzel.patternplaceholder.PatternPlaceholder;
 
 public class MainActivity extends AppCompatActivity {
 
