@@ -32,15 +32,8 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-
-install {
-    repositories.mavenInstaller {
-        pom.project {
-            group "be.omnuzel.patternplaceholder"
-            version "1.0.0"
-        }
-    }
-}
+group = 'be.omnuzel.patternplaceholder'
+version = '1.0.0'
 
 bintray {
     user = System.getenv('BINTRAY_USER')
@@ -49,14 +42,14 @@ bintray {
     configurations = ['archives']
     // Package info for BinTray
     pkg {
-        repo = 'PatternPlaceholder'
+        repo = 'maven'
         name = 'be.omnuzel.patternplaceholder'
-        userOrg = System.getenv("BINTRAY_USER")
         licenses = ['Apache-2.0']
         vcsUrl = 'https://github.com/Oyzuu/PatternPlaceholder-Android.git'
+
         version {
             name = '1.0.0'
-            desc = 'Gradle Bintray Plugin 1.0 final'
+            desc = '1.0.0 initial upload'
             released = new Date()
             vcsTag = '1.0.0'
         }

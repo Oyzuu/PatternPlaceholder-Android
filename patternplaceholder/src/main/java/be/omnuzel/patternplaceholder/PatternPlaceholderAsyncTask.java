@@ -11,15 +11,15 @@ import android.widget.ImageView;
 
 public class PatternPlaceholderAsyncTask extends AsyncTask<PatternPlaceholder.Builder, Void, Bitmap> {
 
-    private PatternPlaceholder.PatternGeneratorAsyncListener callback;
-    private ImageView imageView;
+    private PatternPlaceholder.PatternGeneratorAsyncListener mCallback;
+    private ImageView mImageView;
 
     public PatternPlaceholderAsyncTask(@NonNull PatternPlaceholder.PatternGeneratorAsyncListener callback) {
-        this.callback = callback;
+        this.mCallback = callback;
     }
 
     public PatternPlaceholderAsyncTask(@NonNull ImageView imageView) {
-        this.imageView = imageView;
+        this.mImageView = imageView;
     }
 
     @Override
@@ -31,10 +31,10 @@ public class PatternPlaceholderAsyncTask extends AsyncTask<PatternPlaceholder.Bu
     protected void onPostExecute(Bitmap bitmap) {
         super.onPostExecute(bitmap);
 
-        if (imageView != null) {
-            imageView.setImageBitmap(bitmap);
+        if (mImageView != null) {
+            mImageView.setImageBitmap(bitmap);
         } else {
-            callback.onGenerated(bitmap);
+            mCallback.onGenerated(bitmap);
         }
     }
 }

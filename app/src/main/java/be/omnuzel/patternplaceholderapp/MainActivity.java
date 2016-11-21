@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         RelativeLayout layout = (RelativeLayout) findViewById(R.id.activity_main);
 
         new PatternPlaceholder.Builder(this)
-                .setTilesPerSide(-6)
                 .generate(mImageView1);
 
         new PatternPlaceholder.Builder(this).generate(mImageView2);

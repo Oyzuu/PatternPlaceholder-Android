@@ -46,7 +46,7 @@ public final class PatternPlaceholder {
         int RANDOM_TRIANGLES = 4;
     }
 
-    // Constants for text alignment in drawText()
+    // Constants for mText alignment in drawText()
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({
             TextAlign.UPPER_LEFT,
@@ -66,13 +66,13 @@ public final class PatternPlaceholder {
     /**
      * Generate a square-tiled Bitmap.
      *
-     * @param width              the desired width for the bitmap
-     * @param height             the desired height for the bitmap
+     * @param width              the desired mWidth for the bitmap
+     * @param height             the desired mHeight for the bitmap
      * @param tilesOnSmallerSide the number of tiles on the smaller side
-     * @param palette            the palette used for color randomization, nullable
+     * @param palette            the mPalette used for color randomization, nullable
      * @param colorType          the type of color returned for color randomization,
      *                           RandomColor.ColorType.GRAY by default
-     * @param seed               the seed applied to the Random object passed during generation
+     * @param seed               the mSeed applied to the Random object passed during generation
      * @return a bitmap with squares generated according to given parameters
      */
     private static Bitmap generateSquares(@IntRange(from = 1) final int width,
@@ -109,13 +109,13 @@ public final class PatternPlaceholder {
     /**
      * Generate a Bitmap of n horizontal lines.
      *
-     * @param width         the desired width for the bitmap
-     * @param height        the desired height for the bitmap
+     * @param width         the desired mWidth for the bitmap
+     * @param height        the desired mHeight for the bitmap
      * @param numberOfLines the number of horizontal lines
-     * @param palette       the palette used for color randomization, nullable
+     * @param palette       the mPalette used for color randomization, nullable
      * @param colorType     the type of color returned for color randomization,
      *                      RandomColor.ColorType.GRAY by default
-     * @param seed          the seed applied to the Random object passed during generation
+     * @param seed          the mSeed applied to the Random object passed during generation
      * @return a bitmap with horizontal lines generated according to given parameters
      */
     private static Bitmap generateHorizontalLines(@IntRange(from = 1) final int width,
@@ -143,13 +143,13 @@ public final class PatternPlaceholder {
     /**
      * Generate a Bitmap of n vertical lines.
      *
-     * @param width         the desired width for the bitmap
-     * @param height        the desired height for the bitmap
+     * @param width         the desired mWidth for the bitmap
+     * @param height        the desired mHeight for the bitmap
      * @param numberOfLines the number of vertical lines
-     * @param palette       the palette used for color randomization, nullable
+     * @param palette       the mPalette used for color randomization, nullable
      * @param colorType     the type of color returned for color randomization,
      *                      RandomColor.ColorType.GRAY by default
-     * @param seed          the seed applied to the Random object passed during generation
+     * @param seed          the mSeed applied to the Random object passed during generation
      * @return a bitmap with vertical lines generated according to given parameters
      */
     private static Bitmap generateVerticalLines(@IntRange(from = 1) final int width,
@@ -177,13 +177,13 @@ public final class PatternPlaceholder {
     /**
      * Generate a Bitmap with staggered rows of fish-like scales.
      *
-     * @param width        the desired width for the bitmap
-     * @param height       the desired height for the bitmap
+     * @param width        the desired mWidth for the bitmap
+     * @param height       the desired mHeight for the bitmap
      * @param scalesPerRow the number of scales per row
-     * @param palette      the palette used for color randomization, nullable
+     * @param palette      the mPalette used for color randomization, nullable
      * @param colorType    the type of color returned for color randomization,
      *                     RandomColor.ColorType.GRAY by default
-     * @param seed         the seed applied to the Random object passed during generation
+     * @param seed         the mSeed applied to the Random object passed during generation
      * @return a bitmap with staggered rows of scales generated according to given parameters
      */
     private static Bitmap generateFishScales(@IntRange(from = 1) final int width,
@@ -222,13 +222,13 @@ public final class PatternPlaceholder {
     /**
      * Generate a Bitmap with random triangle strips
      *
-     * @param width     the desired width for the bitmap
-     * @param height    the desired height for the bitmap
+     * @param width     the desired mWidth for the bitmap
+     * @param height    the desired mHeight for the bitmap
      * @param rows      the number of rows
-     * @param palette   the palette used for color randomization, nullable
+     * @param palette   the mPalette used for color randomization, nullable
      * @param colorType the type of color returned for color randomization,
      *                  RandomColor.ColorType.GRAY by default
-     * @param seed      the seed applied to the Random object passed during generation
+     * @param seed      the mSeed applied to the Random object passed during generation
      * @return a bitmap with randomly generated triangles according to given parameters
      */
     private static Bitmap generateRandomTriangles(@IntRange(from = 1) final int width,
@@ -303,8 +303,8 @@ public final class PatternPlaceholder {
      * <p>
      * Except for corners, every coordinate is generated with a random margin on one or both axes.
      *
-     * @param width  the desired width for the bitmap
-     * @param height the desired height for the bitmap
+     * @param width  the desired mWidth for the bitmap
+     * @param height the desired mHeight for the bitmap
      * @param rows   the number of horizontal triangle strips
      * @param random the random instance passed from generateRandomTriangles()
      * @return an array of coordinates used in generateRandomTriangles()
@@ -361,16 +361,16 @@ public final class PatternPlaceholder {
     }
 
     /**
-     * Draw text on given Bitmap.
+     * Draw mText on given Bitmap.
      * <p>
      * Margin constant is set at 2.6% of the bitmap smallest side. (4dp for 150dp side)
-     * Text size will be set accordingly to the bitmap width minus left and right margins.
+     * Text size will be set accordingly to the bitmap mWidth minus left and right margins.
      *
      * @param bitmap    the generated bitmap to draw on
-     * @param text      the text to be drawn on given bitmap
-     * @param textColor the text color
-     * @param textAlign the text alignment
-     * @return a bitmap previously generated by the builder with given text on it
+     * @param text      the mText to be drawn on given bitmap
+     * @param textColor the mText color
+     * @param textAlign the mText alignment
+     * @return a bitmap previously generated by the builder with given mText on it
      */
     public static Bitmap drawText(@NonNull Bitmap bitmap, String text,
                                   @ColorInt final int textColor, @TextAlign final int textAlign) {
@@ -439,10 +439,10 @@ public final class PatternPlaceholder {
     }
 
     /**
-     * Return a seeded Random instance or a null one according to given seed.
+     * Return a seeded Random instance or a null one according to given mSeed.
      *
-     * @param seed the seed for random generation
-     *             method will return a null Random object if seed equals zero
+     * @param seed the mSeed for random generation
+     *             method will return a null Random object if mSeed equals zero
      * @return a seeded random or a null one
      */
     private static Random getRandomForSeed(long seed) {
@@ -477,7 +477,7 @@ public final class PatternPlaceholder {
      * <pre>
      *     {@code
      * bitmap = new PatternPlaceholder.Builder()
-     *     .setSize(MyContainer.width())
+     *     .setSize(MyContainer.mWidth())
      *     .setTilesPerSide(4)
      *     .setPatternType(PatternPlaceholder.PatternType.RANDOM_TRIANGLES)
      *     .setColorGenerationType(RandomColor.ColorType.DARK_GRAY)
@@ -489,74 +489,73 @@ public final class PatternPlaceholder {
      */
     public static class Builder {
 
-        private int width = 150;
-        private int height = 150;
-        private int tilesPerSide = 3;
-        private int[] palette;
-        private int colorGenerationType = RandomColor.ColorType.GREY;
-        private int patternType = PatternType.SQUARES;
-        private String text;
-        private int textColor = Color.BLACK;
-        private int textAlign = TextAlign.CENTER;
-        private long seed = new Random().nextLong();
+        private int mWidth = 150;
+        private int mHeight = 150;
+        private int mTilesPerSide = 3;
+        private int[] mPalette;
+        private int mColorGenerationType = RandomColor.ColorType.GREY;
+        private int mPatternType = PatternType.SQUARES;
+        private String mText;
+        private int mTextColor = Color.BLACK;
+        private int mTextAlign = TextAlign.CENTER;
+        private long mSeed = new Random().nextLong();
+        private boolean mIsCachingEnabled = false;
 
-        private Bitmap bitmap;
-        private final Context context;
-        private boolean isCachingEnabled = false;
+        private final Context mContext;
 
         public Builder(Context context) {
-            this.context = context;
+            mContext = context;
         }
 
         public PatternPlaceholder.Builder setSize(@IntRange(from = 1) int width,
                                                   @IntRange(from = 1) int height) {
-            this.width = width;
-            this.height = height;
+            mWidth = width;
+            mHeight = height;
             return this;
         }
 
         public PatternPlaceholder.Builder setTilesPerSide(@IntRange(from = 1) int tilesPerSide) {
-            this.tilesPerSide = tilesPerSide;
+            mTilesPerSide = tilesPerSide;
             return this;
         }
 
         public PatternPlaceholder.Builder setPalette(@Nullable @Size(min = 1) int[] palette) {
-            this.palette = palette;
+            mPalette = palette;
             return this;
         }
 
         public PatternPlaceholder.Builder setColorGenerationType(@RandomColor.ColorType int colorGenerationType) {
-            this.colorGenerationType = colorGenerationType;
+            mColorGenerationType = colorGenerationType;
             return this;
         }
 
         public PatternPlaceholder.Builder setPatternType(@PatternType int patternType) {
-            this.patternType = patternType;
+            mPatternType = patternType;
             return this;
         }
 
         public PatternPlaceholder.Builder setSeed(long seed) {
-            this.seed = seed;
+            mSeed = seed;
             return this;
         }
 
         public PatternPlaceholder.Builder setText(@Nullable String text) {
-            this.text = text;
+            mText = text;
             return this;
         }
 
         public PatternPlaceholder.Builder setTextColor(@ColorInt int textColor) {
-            this.textColor = textColor;
+            mTextColor = textColor;
             return this;
         }
 
         public PatternPlaceholder.Builder setTextAlign(@TextAlign int textAlign) {
-            this.textAlign = textAlign;
+            mTextAlign = textAlign;
             return this;
         }
 
         public PatternPlaceholder.Builder withCacheEnabled(boolean isCachingEnabled) {
-            this.isCachingEnabled = isCachingEnabled;
+            mIsCachingEnabled = isCachingEnabled;
             return this;
         }
 
@@ -565,10 +564,11 @@ public final class PatternPlaceholder {
          */
         public Bitmap generate() {
             long start = System.currentTimeMillis();
+            Bitmap bitmap;
 
             BitmapFetcher fetcher = null;
-            if (isCachingEnabled) {
-                fetcher = new BitmapFetcher(context);
+            if (mIsCachingEnabled) {
+                fetcher = new BitmapFetcher(mContext);
 
                 bitmap = fetcher.getBitmapFromCache(hashCode() + "");
                 if (bitmap != null) {
@@ -578,38 +578,38 @@ public final class PatternPlaceholder {
                 }
             }
 
-            switch (patternType) {
+            switch (mPatternType) {
                 case PatternType.SQUARES:
-                    bitmap = generateSquares(width, height, tilesPerSide,
-                            palette, colorGenerationType, seed);
+                    bitmap = generateSquares(mWidth, mHeight, mTilesPerSide,
+                            mPalette, mColorGenerationType, mSeed);
                     break;
                 case PatternType.VERTICAL_LINES:
-                    bitmap = generateVerticalLines(width, height, tilesPerSide,
-                            palette, colorGenerationType, seed);
+                    bitmap = generateVerticalLines(mWidth, mHeight, mTilesPerSide,
+                            mPalette, mColorGenerationType, mSeed);
                     break;
                 case PatternType.HORIZONTAL_LINES:
-                    bitmap = generateHorizontalLines(width, height, tilesPerSide,
-                            palette, colorGenerationType, seed);
+                    bitmap = generateHorizontalLines(mWidth, mHeight, mTilesPerSide,
+                            mPalette, mColorGenerationType, mSeed);
                     break;
                 case PatternType.SCALES:
-                    bitmap = generateFishScales(width, height, tilesPerSide,
-                            palette, colorGenerationType, seed);
+                    bitmap = generateFishScales(mWidth, mHeight, mTilesPerSide,
+                            mPalette, mColorGenerationType, mSeed);
                     break;
                 case PatternType.RANDOM_TRIANGLES:
-                    bitmap = generateRandomTriangles(width, height, tilesPerSide,
-                            palette, colorGenerationType, seed);
+                    bitmap = generateRandomTriangles(mWidth, mHeight, mTilesPerSide,
+                            mPalette, mColorGenerationType, mSeed);
                     break;
                 default:
-                    bitmap = generateSquares(width, height, tilesPerSide,
-                            palette, colorGenerationType, seed);
+                    bitmap = generateSquares(mWidth, mHeight, mTilesPerSide,
+                            mPalette, mColorGenerationType, mSeed);
                     break;
             }
 
-            if (text != null) {
-                bitmap = drawText(bitmap, text, textColor, textAlign);
+            if (mText != null) {
+                bitmap = drawText(bitmap, mText, mTextColor, mTextAlign);
             }
 
-            if (isCachingEnabled) {
+            if (mIsCachingEnabled) {
                 if (fetcher != null) {
                     fetcher.addBitmapToCache(hashCode() + "", bitmap);
                     Log.i("Fetcher", "Wrote bitmap on cache");
@@ -635,8 +635,8 @@ public final class PatternPlaceholder {
          */
         public AsyncTask<Builder, Void, Bitmap> generate(ImageView imageView) {
             // In case of lengthy generation, preset imageview's background with a color from
-            // desired palette or generation type
-            imageView.setBackgroundColor(RandomColor.get(palette, colorGenerationType, new Random()));
+            // desired mPalette or generation type
+            imageView.setBackgroundColor(RandomColor.get(mPalette, mColorGenerationType, new Random()));
             return new PatternPlaceholderAsyncTask(imageView).execute(this);
         }
 
@@ -647,31 +647,31 @@ public final class PatternPlaceholder {
 
             Builder builder = (Builder) o;
 
-            if (width != builder.width) return false;
-            if (height != builder.height) return false;
-            if (tilesPerSide != builder.tilesPerSide) return false;
-            if (colorGenerationType != builder.colorGenerationType) return false;
-            if (patternType != builder.patternType) return false;
-            if (textColor != builder.textColor) return false;
-            if (textAlign != builder.textAlign) return false;
-            if (seed != builder.seed) return false;
-            if (!Arrays.equals(palette, builder.palette)) return false;
+            if (mWidth != builder.mWidth) return false;
+            if (mHeight != builder.mHeight) return false;
+            if (mTilesPerSide != builder.mTilesPerSide) return false;
+            if (mColorGenerationType != builder.mColorGenerationType) return false;
+            if (mPatternType != builder.mPatternType) return false;
+            if (mTextColor != builder.mTextColor) return false;
+            if (mTextAlign != builder.mTextAlign) return false;
+            if (mSeed != builder.mSeed) return false;
+            if (!Arrays.equals(mPalette, builder.mPalette)) return false;
 
-            return text != null ? text.equals(builder.text) : builder.text == null;
+            return mText != null ? mText.equals(builder.mText) : builder.mText == null;
         }
 
         @Override
         public int hashCode() {
-            int result = width;
-            result = 31 * result + height;
-            result = 31 * result + tilesPerSide;
-            result = 31 * result + (palette != null ? Arrays.hashCode(palette) : 0);
-            result = 31 * result + colorGenerationType;
-            result = 31 * result + patternType;
-            result = 31 * result + (text != null ? text.hashCode() : 0);
-            result = 31 * result + textColor;
-            result = 31 * result + textAlign;
-            result = 31 * result + (int) (seed ^ (seed >>> 32));
+            int result = mWidth;
+            result = 31 * result + mHeight;
+            result = 31 * result + mTilesPerSide;
+            result = 31 * result + (mPalette != null ? Arrays.hashCode(mPalette) : 0);
+            result = 31 * result + mColorGenerationType;
+            result = 31 * result + mPatternType;
+            result = 31 * result + (mText != null ? mText.hashCode() : 0);
+            result = 31 * result + mTextColor;
+            result = 31 * result + mTextAlign;
+            result = 31 * result + (int) (mSeed ^ (mSeed >>> 32));
             return result;
         }
     }
