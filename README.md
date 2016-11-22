@@ -51,10 +51,10 @@ Bitmap bitmap = new PatternPlaceholder.Builder(this)
 
 ![alt text](https://github.com/Oyzuu/PatternPlaceholder-Android/blob/master/app/src/main/res/mipmap-xxxhdpi/patternplaceholder-patterns.png "patterns example")
 
-Use [any material design color](https://material.google.com/style/color.html) individually or get corresponding swatch with MaterialColor.getColorForValue(int, int) and getSwatch(int)
+Use [any material design color](https://material.google.com/style/color.html) individually or get corresponding swatch with `MaterialColor.getColorForValue(int, int)` and `getSwatch(int)`
 
-For asynchronous loading, use generate(PatternGeneratorAsyncListener) or generate(ImageView). 
-With a context provided as listener, onGenerated(Bitmap) will be called on completion.
+For asynchronous loading, use `generate(PatternGeneratorAsyncListener)` or `generate(ImageView)`. 
+With a context provided as listener, `onGenerated(Bitmap)` will be called on completion.
 ```java
 new PatternPlaceholder.Builder(this)
                 // the complete swatch from 50 to 900
@@ -63,7 +63,7 @@ new PatternPlaceholder.Builder(this)
                 // or generate(PatternGeneratorAsyncListener)
 ```
 
-Or use RandomColor for various random coloring (i.e. : light greys,  dark greys or any randomized color)
+Or use `RandomColor` for various random coloring (i.e. : light greys,  dark greys or any randomized color)
 ```java
 new PatternPlaceholder.Builder(this)
                 // ALL, LIGHT_GREY, MEDIUM_GREY, DARK_GREY, GREY
