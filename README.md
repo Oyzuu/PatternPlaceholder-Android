@@ -85,6 +85,6 @@ setText(*String*) | The text to be drawn on top of the bitmap (won't be called i
 setTextColor(*int*) | The color of drawn text
 setTextAlign(*@TextAlign int*) | The text alignment (warning on non-constants, CENTER by default)
 withCacheEnabled(*boolean*) | Enable caching (should be reserved for large and / or dense bitmaps)
-generate() | Synchronous, returns a **bitmap**
-generate(*PatternGeneratorAsyncListener*) | Asynchronous, onGenerated(Bitmap) will be called on completion
-generate(*ImageView*) | Asynchronous, generates and load the bitmap into given ImageView
+generate() | Synchronous, return a **bitmap**
+generate(*PatternGeneratorAsyncListener*) | Asynchronous, onGenerated(*Bitmap*) will be called on completion
+generate(*ImageView*) | Asynchronous, generate and load the bitmap into given ImageView
