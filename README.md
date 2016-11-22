@@ -107,3 +107,7 @@ getSwatch(*@MaterialColor.Color int*) | Return a palette for given material colo
 getColorForValue(*@MaterialColor.Color int*, *int*) | Return the corresponding material color for given value
 
 Swatches with values can befound here : [https://material.google.com/style/color.html](https://material.google.com/style/color.html)
+
+
+
+Special thanks to Jean-Bernard Collet for guidance and advice. Find him on [LinkedIn](https://www.linkedin.com/in/jean-bernard-collet-a0176418/en )
