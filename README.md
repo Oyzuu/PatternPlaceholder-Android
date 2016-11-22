@@ -73,11 +73,11 @@ new PatternPlaceholder.Builder(this)
 
 ### Builder methods
 
-name | description
+method | description
 --- | ---
 setSize(*int*, *int*) | Set the width and height of the bitmap
 setTilesPerSide(*int*) | Set the number of tiles, strips, scales or lines, depending on pattern type
-setPalette(*int[]*) | Set the color palette used for generation, nullable (if null, will use colorGenerationType)
+setPalette(*@Nullable int[]*) | Set the color palette used for generation (if null, will use colorGenerationType)
 setColorGenerationType(*@RandomColor.ColorType int*) | Set the color generation for RandomColor (warning on non-constants, GREY by default)
 setPatternType(*@PatternType int*) | Set the bitmap pattern (warning on non-constants, SQUARES by default)
 setSeed(*long*) | Set the seed for the Random instance used in triangles and RandomColor generation
@@ -88,3 +88,22 @@ withCacheEnabled(*boolean*) | Enable caching (should be reserved for large and /
 generate() | Synchronous, return a **bitmap**
 generate(*PatternGeneratorAsyncListener*) | Asynchronous, onGenerated(*Bitmap*) will be called on completion
 generate(*ImageView*) | Asynchronous, generate and load the bitmap into given ImageView
+
+### RandomColor methods
+
+method | description
+--- | ---
+get(*@Nullable int[]*, *@ColorType int*, *@NonNull Random*) | Return a color integer, picked randomly from the palette or, if said palette is null, from any method corresponding to given ColorType
+getColor(*@NonNull Random*) | Return a random color, range : red[0-255], green[0-255], blue[0-255]
+getGrey(*@NonNull Random*) | Return a random grey value, range : [0-255]
+getLightGrey(*@NonNull Random*) | Return a random light grey value, range : [155-255]
+getMediumGrey(*@NonNull Random*) | Return a random medium grey value, range : [100-200]
+getRandomDarkGrey(*@NonNull Random*) | Return a random dark grey value, range : [0-100] (and, yes, I forgot to refactor this one :extreme_sadface:)
+
+### MaterialColor methods
+method | description
+--- | --- 
+getSwatch(*@MaterialColor.Color int*) | Return a palette for given material color (material values from 50 to 900)
+getColorForValue(*@MaterialColor.Color int*, *int*) | Return the corresponding material color for given value
+
+Swatches with values can befound here : [https://material.google.com/style/color.html](https://material.google.com/style/color.html)
